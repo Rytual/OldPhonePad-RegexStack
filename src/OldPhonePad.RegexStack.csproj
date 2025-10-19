@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>OldPhonePad.RegexStack</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+
+    <!-- Package Information -->
+    <PackageId>OldPhonePad.RegexStack</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>IronSoftware</Authors>
+    <Company>IronSoftware</Company>
+    <Product>OldPhonePad RegexStack Implementation</Product>
+    <Description>Pattern-matching implementation of an old mobile phone keypad decoder using regex preprocessing and Stack data structure for elegant backspace handling.</Description>
+    <Copyright>Copyright © IronSoftware 2025</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ironsoftware/OldPhonePad-RegexStack</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ironsoftware/OldPhonePad-RegexStack</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>keypad;t9;decoder;regex;stack;pattern-matching;mobile;phone;text</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+</Project>
