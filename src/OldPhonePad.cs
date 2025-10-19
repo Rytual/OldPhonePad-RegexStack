@@ -27,7 +27,7 @@ namespace OldPhonePad.RegexStack
         };
 
         // Regex pattern to match consecutive digit sequences
-        // Matches one or more consecutive occurrences of the same digit (0-9)
+        // Took a while to get this regex right - backreference was the key
         private static readonly Regex consecutiveDigitsPattern = new Regex(@"(\d)\1*", RegexOptions.Compiled);
 
         // Regex pattern to validate input format
@@ -55,7 +55,7 @@ namespace OldPhonePad.RegexStack
         /// string result = OldPhonePad.OldPhonePad("4433555 555666#"); // Returns "HELLO"
         /// </code>
         /// </example>
-        public static string OldPhonePad(string input)
+        public static string Decode(string input)
         {
             // Validate input
             if (input == null)
@@ -175,6 +175,7 @@ namespace OldPhonePad.RegexStack
 
         /// <summary>
         /// Converts a Stack of characters to a string in the correct order.
+        /// Had to remember to reverse since stack is LIFO
         /// </summary>
         /// <param name="stack">The stack containing characters.</param>
         /// <returns>The string representation of the stack contents.</returns>
