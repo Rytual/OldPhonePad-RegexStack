@@ -52,11 +52,11 @@ private static readonly Regex consecutiveDigitsPattern =
     new Regex(@"(\d)\1*", RegexOptions.Compiled);
 ```
 
-This pattern is beautiful in its simplicity:
+This pattern is simple:
 - `(\d)` - Captures a digit into group 1
 - `\1*` - Matches zero or more occurrences of that same digit (backreference)
 
-So "222" matches as one sequence, "33" matches as another, and we process them as units.
+So "222" matches as one sequence, "33" matches as another and we process them as units.
 
 ### 2. Stack-Based Result Building
 
@@ -73,10 +73,10 @@ if (resultStack.Count > 0)
     resultStack.Pop();
 ```
 
-This is elegant because:
+This is nice because:
 - Backspace is O(1) instead of O(n) for string manipulation
 - Stack naturally models the "undo" operation
-- LIFO behavior perfectly matches how backspace works
+- LIFO behavior matches how backspace works
 
 ### 3. Functional Pipeline Style
 
@@ -136,11 +136,11 @@ Console.WriteLine(analysis);
 //   Position 4: '333' -> Key '3' pressed 3 time(s) -> 'F'
 ```
 
-This is incredibly useful for:
+This is useful for:
 - Understanding how the regex engine processes your input
 - Debugging complex sequences
 - Learning how pattern matching works
-- Impressing colleagues with your regex knowledge
+- Showing off your regex knowledge
 
 ## How It Works: Deep Dive
 
@@ -153,7 +153,7 @@ private static readonly Regex validInputPattern =
     new Regex(@"^[0-9\s\*]*#$", RegexOptions.Compiled);
 ```
 
-This ensures the input contains only:
+This checks the input contains only:
 - Digits (0-9)
 - Spaces (for pauses)
 - Asterisks (for backspace)
@@ -219,7 +219,7 @@ private static string StackToString(Stack<char> stack)
 
 ## Running the Tests
 
-We have 50+ comprehensive tests including regex-specific test cases:
+We have 50+ tests including regex-specific test cases:
 
 ```bash
 # Run all tests
@@ -263,17 +263,17 @@ Using `RegexOptions.Compiled` means:
 
 ## Advantages of This Approach
 
-### 1. Pattern Recognition Power
+**Pattern Recognition Power**
 Regex excels at finding patterns. Consecutive digits are a pattern. Let regex do what it does best.
 
-### 2. Elegant Backspace Handling
+**Clean Backspace Handling**
 Stack makes backspace trivial:
 - No substring operations
 - No string rebuilding
 - No off-by-one errors
 - Just `Pop()`
 
-### 3. Clear Intent
+**Clear Intent**
 The code reads like the problem statement:
 ```csharp
 // Find consecutive digits
@@ -286,41 +286,41 @@ char? character = GetCharacterForKey(key, pressCount);
 resultStack.Push(character.Value);
 ```
 
-### 4. Debugging Visibility
-The `AnalyzeInput()` method lets you see exactly what the regex is doing—invaluable for understanding and debugging.
+**Debugging Visibility**
+The `AnalyzeInput()` method lets you see exactly what the regex is doing - useful for understanding and debugging.
 
-### 5. Performance
+**Performance**
 - Compiled regex is fast
 - Stack operations are O(1)
 - No repeated string allocations
 
 ## Disadvantages (Because Honesty Matters)
 
-### 1. Regex Learning Curve
+**Regex Learning Curve**
 Not everyone is comfortable with regex. `(\d)\1*` might look like line noise to beginners.
 
-### 2. Regex Overhead
+**Regex Overhead**
 For very simple inputs, regex might be overkill. The compilation and pattern matching have overhead.
 
-### 3. Stack Reversal Required
+**Stack Reversal Required**
 Converting stack to string requires reversing the order, adding a small O(m) operation.
 
-### 4. Less Intuitive for Some
+**Less Intuitive for Some**
 Some developers find explicit loops more readable than regex patterns.
 
 ## When to Use This Approach
 
-✅ **Good for:**
+**Good for:**
 - Input with complex patterns
 - When you need to analyze/debug the parsing process
 - Applications that process many messages (compiled regex pays off)
 - When backspace operations are frequent
 - Learning about regex and data structures
 
-❌ **Overkill for:**
+**Overkill for:**
 - Very simple, short inputs
 - One-off processing
-- When regex expertise is limited on the team
+- Teams without much regex expertise
 - Environments where regex library isn't available
 
 ## Nostalgic Tech Corner: Pattern Matching Through the Ages
@@ -339,12 +339,12 @@ Regex is kind of like that, but computerized. It's pattern matching with superpo
 [A-Z]{2,}       # ALL CAPS MESSAGES (because you felt strongly about it)
 ```
 
-The Stack data structure is equally nostalgic. It's basically like that pile of paper on your desk:
+The Stack data structure is equally nostalgic. It's like that pile of paper on your desk:
 - Put new stuff on top (push)
 - Take the top thing off (pop)
 - Never dig through the middle (unless you're desperate)
 
-In our phone keypad decoder, regex finds the patterns and stack handles the undo operations. It's like having a pattern-recognition AI and a time machine working together. Except it's 2025 and we're using them to decode text from a phone technology from the 1990s. Full circle.
+In our phone keypad decoder, regex finds the patterns and stack handles the undo operations. Like having a pattern-recognition AI and a time machine working together. Except it's 2025 and we're using them to decode text from phone technology from the 1990s. Full circle.
 
 ## Regex Patterns Explained
 
@@ -369,7 +369,7 @@ Examples:
 $           # End of string
 ```
 
-This ensures input is properly formatted before we process it.
+This checks input is formatted right before we process it.
 
 ## Related Repositories
 
@@ -381,18 +381,18 @@ This is part of a collection exploring different approaches to the same problem:
 - [OldPhonePad-OOP](https://github.com/ironsoftware/OldPhonePad-OOP) - Object-oriented design
 - **OldPhonePad-RegexStack** - You are here! (Regex + Stack)
 
-Each repository demonstrates different programming paradigms and trade-offs. Perfect for:
+Each repository demonstrates different programming paradigms and trade-offs. Good for:
 - Learning different problem-solving approaches
 - Comparing performance characteristics
 - Understanding when to use which technique
 - Interview preparation
-- Showing off your diverse skill set
+- Showing off your skills
 
 ## Contributing
 
 Got a regex pattern that works better? Found a way to optimize the stack operations? PRs welcome!
 
-Please ensure:
+Make sure:
 - All tests pass (`dotnet test`)
 - Code follows C# conventions
 - Regex patterns are commented and explained
@@ -406,6 +406,6 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 *Built with regex magic, stack elegance, and fond memories of when finding patterns in your call history felt like detective work.*
 
-**Pro tip**: Understanding regex is like understanding why your ex texted "k" vs "ok" vs "okay"—it's all about the patterns. Master the patterns, master the universe. Or at least master this phone keypad decoder.
+**Pro tip**: Understanding regex is like understanding why your ex texted "k" vs "ok" vs "okay" - it's all about the patterns. Master the patterns, master the universe. Or at least master this phone keypad decoder.
 
-**Remember**: Regex is powerful, but with great power comes great responsibility. And great confusion when you look at your own regex six months later. Comment your patterns, future you will thank you.
+**Remember**: Regex is powerful but with great power comes great confusion when you look at your own regex six months later. Comment your patterns, future you will thank you.

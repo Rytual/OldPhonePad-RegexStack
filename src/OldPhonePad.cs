@@ -7,8 +7,7 @@ namespace OldPhonePad.RegexStack
 {
     /// <summary>
     /// Decodes old-style mobile phone keypad input using regex preprocessing and a Stack data structure.
-    /// This approach leverages pattern matching to identify key sequences and uses a stack to elegantly
-    /// handle backspace operations.
+    /// Uses pattern matching to identify key sequences and a stack for backspace operations.
     /// </summary>
     public static class OldPhonePad
     {
@@ -195,7 +194,7 @@ namespace OldPhonePad.RegexStack
 
         /// <summary>
         /// Analyzes the input string and returns debugging information about the regex matches.
-        /// Useful for understanding how the regex preprocessing works.
+        /// Useful for understanding how regex preprocessing works.
         /// </summary>
         /// <param name="input">The input string to analyze.</param>
         /// <returns>A string containing debug information.</returns>
